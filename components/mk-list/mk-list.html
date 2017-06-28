@@ -21,7 +21,6 @@
         let Element = Object.create(HTMLElement.prototype);
 
         let shadowRoot;
-        console.log("Test")
 
         Element.createdCallback = function() {
             shadowRoot = this.createShadowRoot();
