@@ -2,7 +2,7 @@
     <style>
         @import url('/components/mk-section/mk-section.css');
     </style>
-    <h1>My first Webcomponent</h1>
+    <h1><span iterator></span>. <span headline></span> </h1>
     <p>This is an example introtext</p>
 </template>
 <script>
@@ -17,10 +17,14 @@
 
         Element.createdCallback = function() {
             shadowRoot = this.createShadowRoot();
+            let headline = this.getAttribute('headline');
+            let iterator = this.getAttribute('iterator');
 
-            let headline = this.getAttribute('data-headline');
+            template.content.querySelector('[headline]').textContent = headline;
+            template.content.querySelector('[iterator]').textContent = iterator;
+            
+
             let clone = parent.importNode(template.content, true);
-
             shadowRoot.appendChild(clone);
         }
 
