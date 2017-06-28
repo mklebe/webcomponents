@@ -1,0 +1,29 @@
+<template>
+    <style>
+        @import url('/components/mk-section/mk-section.css');
+    </style>
+    <h1>My first Webcomponent</h1>
+    <p>This is an example introtext</p>
+</template>
+<script>
+    (function() {
+        let doc = document.currentScript.ownerDocument;
+        let parent = document;
+
+        let template = doc.querySelector('template');
+        let Element = Object.create(HTMLElement.prototype);
+
+        let shadowRoot;
+
+        Element.createdCallback = function() {
+            shadowRoot = this.createShadowRoot();
+
+            let headline = this.getAttribute('data-headline');
+            let clone = parent.importNode(template.content, true);
+
+            shadowRoot.appendChild(clone);
+        }
+
+        parent.registerElement('mk-section', {prototype: Element})
+    })();
+</script>

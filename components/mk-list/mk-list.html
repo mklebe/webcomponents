@@ -1,0 +1,35 @@
+<template>
+    <style>
+        @import url('/components/mk-list/mk-list.css');
+    </style>
+    <link rel="import" href="./components/mk-section/mk-section.html">
+    <h1>List Component</h1>
+    <p>this shows another subtext</p>
+    suelz
+
+    <mk-section></mk-section>
+</template>
+<script>
+    (function() {
+        let doc = document.currentScript.ownerDocument;
+        let parent = document;
+
+        let template = doc.querySelector('template');
+        let Element = Object.create(HTMLElement.prototype);
+
+        let shadowRoot;
+
+        Element.createdCallback = function() {
+            shadowRoot = this.createShadowRoot();
+            let clone = parent.importNode(template.content, true);
+
+            console.log( typeof this.getAttribute('object-param') )
+
+            shadowRoot.appendChild(clone);
+        }
+
+        console.log( "MK-List" );
+
+        parent.registerElement('mk-list', {prototype: Element})
+    })();
+</script>
