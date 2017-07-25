@@ -2,13 +2,16 @@
     <head>
         <title>Webcomponents Test</title>
         <script src="http://localhost:35729/livereload.js"></script>
-        <link rel="import" href="./components/mk-section/mk-section.html">
-        <link rel="import" href="./components/mk-list/mk-list.html">
     </head>
     <body>
         <script src="dist/bundle.js"></script>
         <h1>It Works</h1>
-        <mk-section iterator="0" headline="Webcomponents are awesome like an awesompossum!"></mk-section>
+        <link rel="import" href="./components/mk-section/mk-section.html">
+        <link rel="import" href="./components/mk-section/mk-section.html">
+        <mk-section>
+            <headline>This is my nested headline, it will be included to the component</headline>
+        </mk-section>
+        <link rel="import" href="./components/mk-list/mk-list.html">
         <mk-list></mk-list>
     </body>
 </html>

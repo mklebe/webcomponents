@@ -2,7 +2,12 @@
     <style>
         @import url('/components/mk-section/mk-section.css');
     </style>
-    <h1><span iterator></span>. <span headline></span> </h1>
+    <h1>
+        <span iterator></span>.
+        <span headline>
+            temp
+        </span>
+    </h1>
     <p>This is an example introtext</p>
 </template>
 <script>
@@ -13,19 +18,34 @@
         let template = doc.querySelector('template');
         let Element = Object.create(HTMLElement.prototype);
 
+        if( 'content' in template ) {
+            console.log( 'content: ', template['content'] );
+        }
+
         let shadowRoot;
 
         Element.createdCallback = function() {
             shadowRoot = this.createShadowRoot();
-            let headline = this.getAttribute('headline');
+            let headline = this.getAttribute('headline') || this.querySelector('headline').innerHTML;
             let iterator = this.getAttribute('iterator');
 
-            template.content.querySelector('[headline]').textContent = headline;
-            template.content.querySelector('[iterator]').textContent = iterator;
+            let size = this.getAttribute('size') || 'medium';
+
+            console.log( template.content )
+
+            if(headline)
+                template.content.querySelector('[headline]').textContent = headline;
+
+            if(iterator)
+                template.content.querySelector('[iterator]').textContent = iterator;
             
 
             let clone = parent.importNode(template.content, true);
+            console.log( clone );
+            // clone.classList.add(`font--${size}`)
             shadowRoot.appendChild(clone);
+
+            console.log( 'Connected: ', template.content.isConnected );
         }
 
         parent.registerElement('mk-section', {prototype: Element})
