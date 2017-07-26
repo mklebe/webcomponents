@@ -5,3 +5,15 @@
 h1 {
     color: green;
 }
+
+.large h1 {
+    font-size: 32px;
+}
+
+.medium h1 {
+    font-size: 24px;
+}
+
+.small h1 {
+    font-size: 18px;
+}
