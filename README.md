@@ -13,12 +13,14 @@ http-server
 * Nested Components
 * Passing parameters into Component
 * Displaying parameters from declarative implementation
+* Implement template programmaticly
+* Implement styling programmaticly
 
 ## Things to make them work
-* Enhance Placeholders
 * Advanced Templating
-** Conditionals
-** Loops
+    * Conditionals
+    * Loops
 * implement SASS
 * Use HTML-Loader
 * Extract JS
+* Update placeholders onChangeAttribute
