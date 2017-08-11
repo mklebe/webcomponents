@@ -7,6 +7,20 @@ let myMarkup = bel([`
     </div>
 `])
 
+let myStyling = bel([`
+    <style>
+        h1 {
+            color: red !important;
+        }
+
+        h2 {
+            color: blue !important;
+        }
+    </style>
+`]);
+
+myMarkup.appendChild(myStyling)
+
 let template = document.createDocumentFragment();
 
 template.content = myMarkup;
